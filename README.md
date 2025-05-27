@@ -1,79 +1,77 @@
-# 📈 Stock Trend Classifier
+# 📈 Classificador de Tendências de Ações
 
-This project presents an end-to-end analysis and classification of stock behavior using historical data from the **S&P 500 index**. The main goal was to **identify patterns and understand the variables that most influence asset returns**, through a structured data science workflow — from data cleaning to predictive modeling.
-
----
-
-## 🧠 Project Summary
-
-The study was conducted using historical data from the S&P 500, with the goal of identifying the key factors that impact stock returns. To achieve this, I explored a complete pipeline:
-
-- 📥 Exploratory Data Analysis  
-- 🧼 Data Cleaning  
-- 🔧 Feature Engineering  
-- 📊 Visual Analysis  
-- 🌀 Clustering  
-- 🤖 Predictive Modeling  
+Este projeto apresenta uma análise completa e classificação do comportamento de ações utilizando dados históricos do índice S&P 500. O principal objetivo foi identificar padrões e entender as variáveis que mais influenciam os retornos dos ativos, por meio de um fluxo de trabalho estruturado de ciência de dados — desde a limpeza dos dados até a modelagem preditiva.
 
 ---
 
-## ⚙️ Technical Workflow
+## 🧠  Resumo do Projeto
 
-### 📉 Missing Data Treatment
+O estudo foi conduzido com dados históricos do S&P 500, com o propósito de identificar os fatores chave que impactam os retornos das ações. Para isso, explorei um pipeline completo:
 
-Linear interpolation was applied to price-related columns, ensuring continuity in the time series and avoiding the loss of important patterns that could affect the model's performance.
+- 📥 Análise Exploratória de Dados
+- 🧼 Limpeza dos Dados
+- 🔧 Engenharia de Atributos (Feature Engineering)
+- 📊 Análise Visual
+- 🌀 Agrupamento (Clustering)
+- 🤖 Modelagem Preditiva
 
+---
+
+## ⚙️ Fluxo técnico
+
+### 📉 Tratamento de Dados Faltantes
+
+Foi aplicada interpolação linear nas colunas relacionadas a preços, garantindo a continuidade na série temporal e evitando a perda de padrões importantes que poderiam afetar o desempenho do modelo.
 ---
 
 ### 🛠️ Feature Engineering
 
-To enrich the dataset and bring depth to the analysis, I created new features, including:
-
-- Daily **volatility** (High - Low)
-- Daily **return %** (Close / Open - 1)
-- **Moving averages** (SMA and EMA)
-- **Standard deviation**, **RSI**, and **log-transformed volume**
-- **Price distance** from moving averages
-- **Temporal features**: year, month, day of week
-- **Target**: next day's return (positive or negative)
+Para enriquecer o conjunto de dados e aprofundar a análise, criei novas features, incluindo:
+- Volatilidade diária (High - Low)
+- Retorno percentual diário (Close / Open - 1)
+- Médias móveis (SMA e EMA)
+- Desvio padrão, RSI e volume transformado em log
+- Distância do preço em relação às médias móveis
+- Features temporais: ano, mês, dia da semana
+- Target: retorno do próximo dia (positivo ou negativo)
 
 ---
 
 ### 📊 Visual Analysis & Insights
 
-Using scatter plots, histograms, boxplots, and heatmaps, I analyzed the relationship between the features and future return behavior.
+Utilizando gráficos de dispersão, histogramas, boxplots e mapas de calor, analisei a relação entre as features e o comportamento dos retornos futuros.
 
 #### Key Insights:
 
-- Stocks with **low prices** and **high volatility** tend to show **extreme returns**, both positive and negative.
-- **Cheap and stable** stocks showed **more consistent returns**, being potential short-term opportunities.
-- **Expensive and stable** assets had lower, yet more **predictable returns**.
+Principais Insights:
+- Ações com preços baixos e alta volatilidade tendem a apresentar retornos extremos, tanto positivos quanto negativos.
+- Ações baratas e estáveis apresentaram retornos mais consistentes, sendo potenciais oportunidades de curto prazo.
+- Ativos caros e estáveis tiveram retornos menores, porém mais predizíveis.
 
-These findings helped define the clustering logic for grouping stocks by **risk-return profiles**.
-
----
-
-### 🌀 Clustering with K-Means
-
-K-Means clustering was applied using **price** and **volatility** as the main axes, resulting in **3 distinct groups**:
-
-- **Cluster 0**: Low price + High volatility → Extreme returns
-- **Cluster 1**: Low price + Low volatility → Consistent returns
-- **Cluster 2**: High price + Low volatility → Stable returns
-
-This segmentation was crucial to understanding which asset profiles tend to stand out in the short term.
+Essas descobertas ajudaram a definir a lógica de agrupamento para segmentar as ações por perfil risco-retorno.
 
 ---
 
-### 🤖 Predictive Modeling with Random Forest
+### 🌀 Agrupamento com K-Means
 
-A classification model was built using **RandomForestClassifier** to predict whether the stock return on the next day would be positive or negative.
+Foi aplicado o algoritmo K-Means usando preço e volatilidade como principais eixos, resultando em 3 grupos distintos:
 
-- **Accuracy:** 66%  
-- Despite market complexity, the model captured patterns that allowed for reasonable predictions of short-term movement.
+- Cluster 0: Baixo preço + Alta volatilidade → Retornos extremos
+- Cluster 1: Baixo preço + Baixa volatilidade → Retornos consistentes
+- Cluster 2: Alto preço + Baixa volatilidade → Retornos estáveis
+
+Essa segmentação foi crucial para entender quais perfis de ativos tendem a se destacar no curto prazo.
 
 ---
-## 🔍 Technologies Used
+
+### 🤖 Modelagem Preditiva com Random Forest
+
+Um modelo de classificação foi construído usando o RandomForestClassifier para prever se o retorno da ação no próximo dia seria positivo ou negativo.
+
+- Acurácia: 66%
+- Apesar da complexidade do mercado, o modelo capturou padrões que permitiram previsões razoáveis de movimentações de curto prazo.
+---
+## 🔍 Técnologias usadas
 
 - Python 3
 - Pandas, NumPy
